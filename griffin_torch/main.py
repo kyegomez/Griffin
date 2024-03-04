@@ -100,7 +100,7 @@ class RMSNorm(nn.Module):
         return F.normalize(x, dim=-1) * self.scale * self.g
 
 
-def output_head(x: Tensor, dim: int):
+def output_head(x: Tensor, num_tokens: int, dim: int):
     """
     Applies a linear transformation followed by softmax activation to the input tensor.
 
@@ -114,7 +114,7 @@ def output_head(x: Tensor, dim: int):
     x = RMSNorm(dim)(x)
 
     # Linear transformation
-    x = nn.Linear(dim, dim)(x)
+    x = nn.Linear(dim, num_tokens)(x)
 
     # Softmax
     return F.softmax(x, dim=-1)
@@ -329,4 +329,4 @@ class Griffin(nn.Module):
         for layer in self.layers:
             x = layer(x) + x
 
-        return output_head(x, self.dim)
+        return output_head(x, self.num_tokens, self.dim)
