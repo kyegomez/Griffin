@@ -46,7 +46,7 @@ model = Griffin(
     heads=8,
     dropout=0.1,
 )
-model = AutoregressiveWrapper(model, max_seq_len=SEQ_LEN)
+model = AutoregressiveWrapper(model, speculative=True)
 
 
 # Use all available GPUs
