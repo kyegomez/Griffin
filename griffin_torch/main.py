@@ -151,7 +151,6 @@ class GriffinResidualBlock(nn.Module):
         mlp_mult: int,
         dropout: float = 0.1,
         heads: int = 8,
-        filter: int = 4,
         *args,
         **kwargs,
     ):
@@ -161,7 +160,6 @@ class GriffinResidualBlock(nn.Module):
         self.mlp_mult = mlp_mult
         self.dropout = dropout
         self.heads = heads
-        self.filter = filter
 
         # Norm
         self.norm = RMSNorm(dim)
@@ -182,12 +180,6 @@ class GriffinResidualBlock(nn.Module):
             dim,
             mult=4,
         )
-
-        # MultiQueryAttention
-        # self.attn = MultiQueryAttention(
-        #     dim,
-        #     heads,
-        # )
 
     def forward(self, x: Tensor):
         """
@@ -278,7 +270,6 @@ class Griffin(nn.Module):
         mlp_mult: int = 4,
         dropout: float = 0.1,
         heads: int = 8,
-        filter: int = 4,
         *args,
         **kwargs,
     ):
@@ -290,7 +281,6 @@ class Griffin(nn.Module):
         self.mlp_mult = mlp_mult
         self.dropout = dropout
         self.heads = heads
-        self.filter = filter
 
         # Layers
         self.layers = nn.ModuleList()
@@ -303,7 +293,6 @@ class Griffin(nn.Module):
                 mlp_mult,
                 dropout,
                 heads,
-                filter,
                 *args,
                 **kwargs,
             )
