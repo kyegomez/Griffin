@@ -68,26 +68,6 @@ class RGLRU(nn.Module):
         return y
 
 
-def output_head(x: Tensor, dim: int):
-    """
-    Applies a linear transformation followed by softmax activation to the input tensor.
-
-    Args:
-        x (torch.Tensor): Input tensor of shape (batch_size, dim).
-        dim (int): Dimension of the input tensor.
-
-    Returns:
-        torch.Tensor: Output tensor of shape (batch_size, dim) after applying linear transformation and softmax activation.
-    """
-    x = nn.LayerNorm(dim)(x)
-
-    # Linear transformation
-    x = nn.Linear(dim, dim)(x)
-
-    # Softmax
-    return F.softmax(x, dim=-1)
-
-
 class RMSNorm(nn.Module):
     """
     Root Mean Square Normalization (RMSNorm) module.
@@ -118,6 +98,26 @@ class RMSNorm(nn.Module):
 
         """
         return F.normalize(x, dim=-1) * self.scale * self.g
+
+
+def output_head(x: Tensor, dim: int):
+    """
+    Applies a linear transformation followed by softmax activation to the input tensor.
+
+    Args:
+        x (torch.Tensor): Input tensor of shape (batch_size, dim).
+        dim (int): Dimension of the input tensor.
+
+    Returns:
+        torch.Tensor: Output tensor of shape (batch_size, dim) after applying linear transformation and softmax activation.
+    """
+    x = RMSNorm(dim)(x)
+
+    # Linear transformation
+    x = nn.Linear(dim, dim)(x)
+
+    # Softmax
+    return F.softmax(x, dim=-1)
 
 
 class GriffinResidualBlock(nn.Module):

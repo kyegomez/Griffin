@@ -46,7 +46,6 @@ model = Griffin(
     heads=8,
     dropout=0.1,
 )
-model = model.to(device="cuda")
 model = AutoregressiveWrapper(model, speculative=True)
 
 

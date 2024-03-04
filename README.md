@@ -1,6 +1,9 @@
 [![Multi-Modality](agorabanner.png)](https://discord.gg/qUtxnK2NMf)
 
 # Griffin
+Implementation of Griffin from the paper: "Griffin: Mixing Gated Linear Recurrences with Local Attention for Efficient Language Models"
+
+
 
 ## install
 `$ pip install griffin-torch`
