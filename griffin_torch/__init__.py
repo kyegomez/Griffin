@@ -1,4 +1,9 @@
-from griffin_torch.main import output_head, RMSNorm, GriffinResidualBlock, Griffin
+from griffin_torch.main import (
+    output_head,
+    RMSNorm,
+    GriffinResidualBlock,
+    Griffin,
+)
 
 
 __all__ = [

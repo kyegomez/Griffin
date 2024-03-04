@@ -37,7 +37,15 @@ def decode_tokens(tokens):
 
 
 # instantiate GPT-like decoder model
-model = Griffin(num_tokens=256, dim=512, depth=8)
+model = Griffin(
+    num_tokens=256,
+    dim=512,
+    depth=8,
+    seq_len=SEQ_LEN,
+    mlp_mult=4,
+    heads=8,
+    dropout=0.1,
+)
 model = AutoregressiveWrapper(model, max_seq_len=SEQ_LEN)
 
 
