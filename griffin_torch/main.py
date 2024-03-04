@@ -319,7 +319,10 @@ class Griffin(nn.Module):
             Tensor: Output tensor.
 
         """
+        # Embed the tokens
         x = self.emb(x)
+
+        # Normilize
         x = self.norm(x)
 
         # Loop

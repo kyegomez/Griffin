@@ -1,8 +1,7 @@
 [![Multi-Modality](agorabanner.png)](https://discord.gg/qUtxnK2NMf)
 
 # Griffin
-Implementation of Griffin from the paper: "Griffin: Mixing Gated Linear Recurrences with Local Attention for Efficient Language Models"
-
+Implementation of Griffin from the paper: "Griffin: Mixing Gated Linear Recurrences with Local Attention for Efficient Language Models". [PAPER LINK](https://huggingface.co/papers/2402.19427)
 
 
 ## install
@@ -38,3 +37,16 @@ print(y)
 
 # License
 MIT
+
+
+# Citation
+```
+@misc{de2024griffin,
+    title={Griffin: Mixing Gated Linear Recurrences with Local Attention for Efficient Language Models}, 
+    author={Soham De and Samuel L. Smith and Anushan Fernando and Aleksandar Botev and George Cristian-Muraru and Albert Gu and Ruba Haroun and Leonard Berrada and Yutian Chen and Srivatsan Srinivasan and Guillaume Desjardins and Arnaud Doucet and David Budden and Yee Whye Teh and Razvan Pascanu and Nando De Freitas and Caglar Gulcehre},
+    year={2024},
+    eprint={2402.19427},
+    archivePrefix={arXiv},
+    primaryClass={cs.LG}
+}
+```
