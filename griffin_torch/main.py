@@ -281,6 +281,7 @@ class Griffin(nn.Module):
         self.mlp_mult = mlp_mult
         self.dropout = dropout
         self.heads = heads
+        self.max_seq_len = seq_len
 
         # Layers
         self.layers = nn.ModuleList()
